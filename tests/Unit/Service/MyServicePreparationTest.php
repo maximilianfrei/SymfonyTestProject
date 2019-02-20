@@ -49,13 +49,7 @@ class MyServicePreparationTest extends MockeryTestCase
 		$responseObjectMock = Mockery::mock(CalculationResponseObject::class);
 		$responseObjectMock->expects()->getReturnValue()->andReturns($returnValue);
 
-		$this->relatedService->expects()->calculateOtherStuff(
-			Mockery::on(
-				function (DateTime $param) {
-					return $param < new DateTime();
-				}
-			)
-		)->andReturns($responseObjectMock);
+		$this->relatedService->expects()->calculateOtherStuff($returnValue)->andReturns($responseObjectMock);
 
 		$this->repository->expects()->getAllTheData($returnValue)->andReturns("2ataDemos");
 
@@ -78,8 +72,10 @@ class MyServicePreparationTest extends MockeryTestCase
 		$this->assertCount();
 		$this->assertContains();
 		$this->assertArrayHasKey();
-*/
+		*/
+		// Also nice to know:
 		//Mockery::any()
+		//Mockery::on()
 	}
 
 	/**

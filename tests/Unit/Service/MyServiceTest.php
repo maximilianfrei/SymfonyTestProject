@@ -73,15 +73,15 @@ class MyServiceTest extends MockeryTestCase
 
 	public function testCalculateTheMessageException(): void
 	{
-		$value = 3;
+		$value = 4;
 
 		$object = Mockery::mock(CalculationResponseObject::class);
-		$object->expects()->getReturnValue()->andReturns(124);
+		$object->expects()->getReturnValue()->andReturns(1234);
 
 		$this->relatedService->expects()
 			->calculateOtherStuff($value)->andReturns($object);
 
-		$this->repository->expects()->getAllTheData(124);
+		$this->repository->expects()->getAllTheData(1234);
 
 		$this->expectException(Mockery\Exception::class);
 		$this->myService->calculateTheMessage($value);
